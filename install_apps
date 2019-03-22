@@ -1,0 +1,16 @@
+#!/bin/sh
+
+base="bash-completion bspwm compton curl dunst git htop lxappearance mc neovim pacaur rofi rsync sxhkd tmux"
+arm_dev="arm-none-eabi-gcc arm-none-eabi-binutils arm-none-eabi-newlib"
+dev="python python2"
+xapps="xorg-server xorg-apps xf86-video-intel"
+
+
+inst_aur="polybar tamzen-font"
+
+sudo pacman --needed -S $base $arm_dev $dev $xapps && pacaur --needed -S $inst_aur
+
+# Fetch vim-plug
+
+curl -fLo ~/hometest/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

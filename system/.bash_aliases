@@ -1,0 +1,5 @@
+alias ls='ls -h --color=auto'
+alias ll='ls -laF'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias poweroff='sudo poweroff'

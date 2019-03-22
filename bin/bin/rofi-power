@@ -1,0 +1,22 @@
+#!/bin/bash
+
+options="Poweroff\nReboot\nLogout\nLock"
+
+selection=$(printf $options | rofi -width 12 -hide-scrollbar -i -dmenu)
+
+echo ${selection}!!!
+
+
+if [ ${#selection} -gt 0 ]; then
+	case "$selection" in
+		Poweroff)
+			sudo poweroff
+			;;
+		Reboot)
+			sudo reboot
+			;;
+		*)
+			;;
+	esac
+fi
+

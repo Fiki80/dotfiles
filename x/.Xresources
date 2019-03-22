@@ -1,0 +1,38 @@
+!#include "/home/fiki/.xrdb/colors/oceanicnext"
+!#include "/home/fiki/.xrdb/colors/onedark"
+#include "/home/fiki/.xrdb/colors/allomancer"
+
+!URxvt*scrollBar: false
+
+!URxvt.font: -misc-termsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1
+!URxvt.boldFont: -misc-termsyn-bold-r-normal--14-101-100-100-c-70-iso8859-1
+
+!URxvt.font: -windows-dina-medium-r-normal--12-90-96-96-c-70-iso8859-1
+!URxvt.boldFont: -windows-dina-bold-r-normal--12-90-96-96-c-70-iso8859-1
+
+!st.font: -misc-tamzen-medium-r-normal--16-116-100-100-c-80-iso8859-1
+!st.boldFont: -misc-tamzen-bold-r-normal--16-116-100-100-c-80-iso8859-1
+
+st.font: Tamzen:pixelsize=16
+!st.font: Fira Code:pixelsize=13:antialias=true:autohint=true:style=medium
+st.bold_font: 1
+st.borderpx: 5
+
+!URxvt.font: xft:Fira Code:style=regular:size=10:antialias=true
+!URxvt.boldFont: xft:Fira Code:style=bold:size=10:antialias=true
+!URxvt.italicFont: xft:Fira Code:style=italic:size=10:antialias=true
+
+
+!URxvt.font: xft:Cousine:style=regular:size=11:antialias=true
+!URxvt.boldFont: xft:Cousine:style=bold:size=11:antialias=true
+!URxvt.italicFont: xft:Cousine:style=italic:size=11:antialias=true
+
+
+Xft.autohint: false
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.dpi: 94
+Xft.antialias: true
+

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# battery_path="/sys/class/power_supply/BAT0"
+battery_path="/home/fiki/projects/bash"
+battery_info="$battery_path/uevent"
+
+RED='\033[01;31m'
+YELLOW='\033[01;33m'
+NONE='\033[00m'
+
+# Check if the battery is connected
+if [ -e $battery_path ]; then
+	battery_max=$(awk -F= '/POWER_SUPPLY_ENERGY_FULL=/ { print $2 }' $battery_info)
+	ac_status=$(awk -F= '/POWER_SUPPLY_STATUS=/ { print $2 }' $battery_info)
+	battery_now=$(awk -F= '/POWER_SUPPLY_ENERGY_NOW=/ { print $2 }' $battery_info)
+
+	# Get the capacity
+	battery_level=$(awk -F= '/POWER_SUPPLY_CAPACITY=/ { print $2 }' $battery_info)
+	# Get actual power consumption
+	battery_power=$(awk -F= '/POWER_SUPPLY_POWER_NOW=/ { print $2 }' $battery_info)
+
+	notify-send --icon=info "Started monitoring battery"
+	
+	# Time remaining (minutes)
+	battery_time=$(echo "$battery_now*60 / $battery_power" | bc)
+
+	[ $battery_level -gt 99 ] && echo "ok"
+	[ $battery_level -lt 35 ] && color=$YELLOW
+	[ $battery_level -lt 15 ] && color=$RED
+
+	if [ $battery_level -lt 8 ]; then
+		# Send notification only if battery is discharging
+		if [ $ac_status = "Discharging" ]; then 
+			notify-send --urgency=critical --icon=dialog-warning "LOW BATTERY! Going to suspend..."
+			sleep 30
+			zzz
+			break
+		fi
+		sleep 1
+	fi
+	echo -e "${color}${battery_level}${NONE}"
+	echo "Remaining time: $battery_time"
+else
+	notify-send "No battery found"
+fi

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SCRIPTNAME=${0##*/}
+
+err() {
+	printf >&2 "${1:-$"Unknown error"}\n"
+	exit 1
+}
+
+extract() {
+	if [[ -f "$1" ]]; then
+		case "$1" in
+			*.zip)		unzip "$1"		;;
+			*.tar.gz)	tar -xf "$1"	;;	
+			*.7z)		7z x "$1"		;;
+			*.rar)		unrar x "$1"	;;
+			*)			echo "'$1' cannot be extracted by $SCRIPTNAME" >&2 ;;
+		esac
+	else
+		err "File '$1' does not exist"
+	fi
+}
+
+
+# Main
+
+if [[ $# -lt 1 ]]; then
+	err $"No input parameters...\nUsage: $SCRIPTNAME <filename>|*"
+else
+	for archive in $@; do
+		if [[ "$archive" =~ part[0-9]+. ]]; then
+			if [[ "$archive" =~ part0*1. ]]; then
+				extract $archive
+			else
+				continue
+			fi
+		else 
+			extract $archive
+		fi
+	done
+fi

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+if type "$1" 

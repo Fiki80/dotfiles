@@ -1,0 +1,34 @@
+#!/bin/bash
+
+SRC="https://github.com/Fiki80/dotfiles"
+TARGET="$HOME/tmp"
+TARBALL="$SRC/tarball/master"
+
+print_err() {
+	printf >&2 "${1:-$"Unknown error"}\n"
+	exit 1
+}
+
+is_executable() {
+	type "$1" > /dev/null 2>&1
+}
+
+
+# fetch dotfiles with git if possible
+if is_executable "git"; then
+	CMD="git clone $SRC $TARGET"
+elif is_executable "curl"; then
+	CMD="curl -L $TARBALL | tar -xz -C "$TARGET" --strip-components=1"
+fi
+
+
+
+if [ -z "$CMD" ]; then
+	print_err "You have to install git or curl first!"
+else 
+	echo "Cloning dotfiles..."
+	mkdir -p $TARGET
+	eval "$CMD"
+fi
+
+
