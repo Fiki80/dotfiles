@@ -4,11 +4,17 @@
 
 # terminal emulator
 super + t
-	st
+	xst
 
 # program launcher
 alt + d
-	dmenu_run
+	dmenu_run -fn 'terminus-10'
+
+alt + F3
+	rofi -show run -sort -sorting-method fzf -case-sensitive
+
+alt + F4
+	rofi-power
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wid=$1
+class=$2
+instance=$3
+
+x=840
+y=390
+w=400
+h=296
+
+if [ "$class" = Galculator ]; then
+#	wmctrl -r $class -e "0,840,390,400,296"
+fi

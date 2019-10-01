@@ -1,15 +1,15 @@
 #! /bin/sh
 
-sxhkd &
+# Set environment
+export BSPWM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bspwm"
 
-bspc monitor -d 'I' 'II' 'III' 'IV'
+bspc monitor -d '1' '2' '3' '4' '5'
 
 bspc config border_width 2
-bspc config window_gap 30
+bspc config window_gap 20
 
 bspc config -d ^4 border_width 2
 bspc config -d ^4 window_gap 8
-
 
 bspc config split_ratio 0.52
 bspc config borderless_monocle true
@@ -19,8 +19,18 @@ bspc config focus_follows_pointer true
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a Firefox desktop=IV follow=on
+bspc rule -a Firefox desktop=4 follow=on
 bspc rule -a Thunar state=floating
 bspc rule -a Lxappearance state=floating
+bspc rule -a Matplotlib state=floating
+bspc rule -a Galculator state=floating center=true rectangle=255x296+0+0
+
+# Script for external rules
+bspc config external_rules_command "$BSPWM_CONFIG/scripts/external_rules"
+
+# Launch keybinding daemon
+sxhkd &
+
+# Autostart
+"$BSPWM_CONFIG/autostart" &

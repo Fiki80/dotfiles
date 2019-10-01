@@ -1,14 +1,8 @@
 #!/bin/sh
 
-base="bash-completion bspwm compton curl dunst git htop lxappearance mc neovim pacaur rofi rsync sxhkd tmux"
-arm_dev="arm-none-eabi-gcc arm-none-eabi-binutils arm-none-eabi-newlib"
-dev="python python2"
-xapps="xorg-server xorg-apps xf86-video-intel"
+base="bash-completion bspwm compton curl dunst git htop i3lock-color lxappearance mc neovim polybar python3 rofi rsync sxhkd font-tamzen tmux void-repo-nonfree wmctrl xautolock xdotool xorg xprop xst"
 
-
-inst_aur="polybar tamzen-font"
-
-sudo pacman --needed -S $base $arm_dev $dev $xapps && pacaur --needed -S $inst_aur
+sudo xbps-install -S -y $base
 
 # Fetch vim-plug
 
