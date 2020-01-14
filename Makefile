@@ -1,4 +1,4 @@
-export XDG_CONFIG_HOME := $(HOME)/hometest/.config
+export XDG_CONFIG_HOME := $(HOME)/.config
 
 .PHONY: help system
 
@@ -22,22 +22,22 @@ stow:
 link: stow
 	@echo "Creating symlinks..."
 	@mkdir -p $(XDG_CONFIG_HOME)
-	@stow -t $(HOME)/hometest bash
-	@stow -t $(HOME)/hometest bin
-	@stow -t $(HOME)/hometest git
-	@stow -t $(HOME)/hometest system
-	@stow -t $(HOME)/hometest x
-	@stow -t $(HOME)/hometest xrdb
+	@stow -t $(HOME) bash
+	@stow -t $(HOME) bin
+	@stow -t $(HOME) git
+	@stow -t $(HOME) system
+	@stow -t $(HOME) x
+	@stow -t $(HOME) xrdb
 	@stow -t $(XDG_CONFIG_HOME) config
 	@echo "Done"
 
 unlink: stow
 	@echo "Removing symlinks..."
-	@stow --delete -t $(HOME)/hometest bash
-	@stow --delete -t $(HOME)/hometest bin
-	@stow --delete -t $(HOME)/hometest git
-	@stow --delete -t $(HOME)/hometest system
-	@stow --delete -t $(HOME)/hometest x
-	@stow --delete -t $(HOME)/hometest xrdb
+	@stow --delete -t $(HOME) bash
+	@stow --delete -t $(HOME) bin
+	@stow --delete -t $(HOME) git
+	@stow --delete -t $(HOME) system
+	@stow --delete -t $(HOME) x
+	@stow --delete -t $(HOME) xrdb
 	@stow --delete -t $(XDG_CONFIG_HOME) config
 	@echo "Done"

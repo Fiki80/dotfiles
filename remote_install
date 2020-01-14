@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SRC="https://github.com/Fiki80/dotfiles"
-TARGET="$HOME/tmp"
+TARGET="$HOME/.dotfiles"
 TARBALL="$SRC/tarball/master"
 
 print_err() {
