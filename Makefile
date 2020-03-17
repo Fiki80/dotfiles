@@ -1,6 +1,18 @@
-export XDG_CONFIG_HOME := $(HOME)/.config
+UNAME=$(shell uname -n)
+export XDG_CONFIG_HOME := $(HOME)/testhome/.config
+TARGET=$(HOME)/testhome
 
-.PHONY: help system
+.PHONY: all help system stow link unlink
+
+ifeq ($(UNAME), x230)
+all: link_x230
+endif
+ifeq ($(UNAME), void)
+all: link_void
+endif
+ifeq ($(UNAME), manjaro)
+all: link_manjaro
+endif
 
 help:
 	@echo "\nUsage:"
@@ -13,31 +25,28 @@ help:
 system:
 	@./install_apps
 
-
-all: link
-
 stow:
 	@type stow > /dev/null 2>&1 || xbps-install -Sy stow
 
-link: stow
+link_void: stow
 	@echo "Creating symlinks..."
 	@mkdir -p $(XDG_CONFIG_HOME)
-	@stow -t $(HOME) bash
-	@stow -t $(HOME) bin
-	@stow -t $(HOME) git
-	@stow -t $(HOME) system
-	@stow -t $(HOME) x
-	@stow -t $(HOME) xrdb
+	@stow -t $(TARGET) bash
+	@stow -t $(TARGET) bin
+	@stow -t $(TARGET) git
+	@stow -t $(TARGET) system
+	@cd x && stow -t $(TARGET) void && cd ..
+	@stow -t $(TARGET) xrdb
 	@stow -t $(XDG_CONFIG_HOME) config
-	@echo "Done"
+	@echo "Done."
 
-unlink: stow
+unlink_void: stow
 	@echo "Removing symlinks..."
-	@stow --delete -t $(HOME) bash
-	@stow --delete -t $(HOME) bin
-	@stow --delete -t $(HOME) git
-	@stow --delete -t $(HOME) system
-	@stow --delete -t $(HOME) x
-	@stow --delete -t $(HOME) xrdb
+	@stow --delete -t $(TARGET) bash
+	@stow --delete -t $(TARGET) bin
+	@stow --delete -t $(TARGET) git
+	@stow --delete -t $(TARGET) system
+	@cd x && stow --delete -t $(TARGET) void && cd ..
+	@stow --delete -t $(TARGET) xrdb
 	@stow --delete -t $(XDG_CONFIG_HOME) config
-	@echo "Done"
+	@echo "Done."
