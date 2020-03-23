@@ -12,4 +12,5 @@ Download the repo with curl:
 
 Install packages and symlinks using 'make':
 
+	cd .dotfiles
 	make
