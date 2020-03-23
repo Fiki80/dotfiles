@@ -11,5 +11,6 @@ Download the repo with curl:
     bash <(curl -fsSL https://raw.githubusercontent.com/Fiki80/dotfiles/master/remote_install)
 
 Install packages and symlinks using 'make':
+
 	cd .dotfiles
 	make
