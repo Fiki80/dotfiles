@@ -16,7 +16,7 @@ is_executable() {
 
 # fetch dotfiles with git if possible
 if is_executable "git"; then
-	CMD="git clone --bare $SRC $TARGET"
+	CMD="git clone $SRC $TARGET"
 elif is_executable "curl"; then
 	CMD="curl -L $TARBALL | tar -xz -C "$TARGET" --strip-components=1"
 fi
