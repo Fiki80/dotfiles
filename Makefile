@@ -2,20 +2,17 @@ UNAME=$(shell uname -n)
 export XDG_CONFIG_HOME := $(HOME)/.config
 TARGET=$(HOME)
 
-.PHONY: all help system link unlink
+.PHONY: all help link unlink
 
 all: link
 
 help:
 	@echo "\nUsage:"
-	@echo "\tmake [ system | link | unlink ]\n"
+	@echo "\tmake [ link | unlink ]\n"
 	@echo "\tsystem ... perform install of needed packages"
 	@echo "\tlink ..... create dotfile's symlinks"
 	@echo "\tunlink ... remove symlinks"
 	@echo ""
-
-system:
-	@./install_apps
 
 link: system
 	@echo "Creating symlinks..."

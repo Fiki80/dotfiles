@@ -29,6 +29,7 @@ else
 	echo "Cloning dotfiles..."
 	mkdir -p $TARGET
 	eval "$CMD"
+	./install_apps
 fi
 
 
