@@ -27,7 +27,7 @@ if [ -z "$CMD" ]; then
 	print_err "You have to install git or curl first!"
 else 
 	echo "Cloning dotfiles..."
-	mkdir -p $TARGET
+	[ -d $TARGET ] || mkdir -p $TARGET
 	eval "$CMD"
 	cd .dotfiles && ./install_apps
 fi
