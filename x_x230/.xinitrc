@@ -32,12 +32,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xrandr --output VGA-1 --mode 1920x1080 --dpi 94
+xrandr --dpi 125
 
 xrdb -load ~/.Xresources
 
 ## Cursor
-xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr &
 
 ## Initial backlight
 # xbacklight -set 30

@@ -5,3 +5,6 @@
 
 [ -f $HOME/.profile ] && . $HOME/.profile
 
+if [[ $(tty) == '/dev/tty1' ]]; then
+	startx -- -dpi 125
+fi

@@ -16,6 +16,7 @@ help:
 
 link: system
 	@echo "Creating symlinks..."
+	@rm -f ~/.bash_profile ~/.bashrc ~/.inputrc
 	@mkdir -p $(XDG_CONFIG_HOME)
 	@stow -t $(TARGET) bash
 	@stow -t $(TARGET) bin
