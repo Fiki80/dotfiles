@@ -2,9 +2,9 @@ UNAME=$(shell uname -n)
 export XDG_CONFIG_HOME := $(HOME)/.config
 TARGET=$(HOME)
 
-.PHONY: all help link unlink
+.PHONY: all help link unlink post-install
 
-all: link
+all: link post-install
 
 help:
 	@echo "\nUsage:"
@@ -14,7 +14,7 @@ help:
 	@echo "\tunlink ... remove symlinks"
 	@echo ""
 
-link: system
+link:
 	@echo "Creating symlinks..."
 	@rm -f ~/.bash_profile ~/.bashrc ~/.inputrc
 	@mkdir -p $(XDG_CONFIG_HOME)
@@ -39,3 +39,6 @@ unlink:
 	@stow --delete -t $(XDG_CONFIG_HOME) config_$(UNAME)
 	@stow --delete -t /etc/fonts fonts
 	@echo "Done."
+
+post-install:
+	@./post_install
