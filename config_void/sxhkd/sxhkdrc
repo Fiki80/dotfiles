@@ -8,7 +8,7 @@ super + t
 
 # program launcher
 alt + d
-	dmenu_run -fn 'terminus-8'
+	dmenu_run -fn 'terminus-10'
 
 alt + F3
 	rofi -show run -sort -sorting-method fzf -case-sensitive
@@ -125,22 +125,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# adjust brightness
-XF86MonBrightnessDown
-	xbacklight -dec 5
-
-XF86MonBrightnessUp
-	xbacklight -inc 5
-
-XF86AudioLowerVolume
-	nbvolume lower
-	
-XF86AudioRaiseVolume
-	nbvolume raise
-
-XF86AudioMute
-	nbvolume mute
-
-XF86AudioMicMute
-	nbvolume micmute

@@ -3,5 +3,7 @@
 # Install vim plugins automatically
 vim +PlugInstall +qall
 
-# Add user to docker group
+# Add user to docker group and start docker daemon
 sudo usermod -aG docker $USER
+sudo ln -s /etc/sv/docker /var/service/
+sudo sv start docker
