@@ -16,7 +16,7 @@ is_executable() {
 
 # fetch dotfiles with git if possible
 if is_executable "git"; then
-	CMD="git clone $SRC $TARGET"
+	CMD="git clone --bare $SRC $TARGET"
 elif is_executable "curl"; then
 	CMD="curl -L $TARBALL | tar -xz -C "$TARGET" --strip-components=1"
 fi
@@ -27,7 +27,8 @@ if [ -z "$CMD" ]; then
 	print_err "You have to install git or curl first!"
 else 
 	echo "Cloning dotfiles..."
-	[ -d $TARGET ] || mkdir -p $TARGET
+	[ -d $TARGET ] && rm -rf $TARGET
+	mkdir -p $TARGET
 	eval "$CMD"
 	cd .dotfiles && ./install_apps
 fi

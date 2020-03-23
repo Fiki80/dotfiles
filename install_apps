@@ -4,8 +4,8 @@
 install_void() {
 	base="bash-completion bspwm compton curl fcron git lxappearance openssh polybar rsync sxhkd tmux void-repo-nonfree wmctrl xdotool xorg xprop xtools"
 	post="alsa-utils pulseaudio intel-video-accel"
-	apps="dmenu docker docker-compose dunst evince firefox gthumb gtkwave htop i3lock-color iverilog mc neovim python3 rofi stow Thunar thunar-volman xautolock xst"
-	fonts="font-Siji font-tamzen liberation-fonts-ttf noto-fonts-ttf noto-fonts-ttf-extra terminus-font"
+	apps="dmenu docker docker-compose dunst evince firefox gthumb gtkwave htop i3lock-color iverilog mc neovim python3 rclone rofi stow Thunar thunar-volman xautolock xst"
+	fonts="font-Siji font-tamzen font-unifont-bdf liberation-fonts-ttf noto-fonts-ttf noto-fonts-ttf-extra terminus-font"
 
 	echo "\nStarting system update...\n"
 	sudo xbps-install -Suy

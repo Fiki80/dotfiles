@@ -6,6 +6,7 @@
 PS1='[\u@\h \W]\$ '
 
 [[ -f .bash_aliases ]] && source .bash_aliases
+[[ -f .env ]] && source .env
 
 # man() {
 #	LESS_TERMCAP_md=$'\e[01;31m' \
