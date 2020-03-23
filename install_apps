@@ -12,7 +12,7 @@ install_void() {
 	sudo xbps-install -Suy
 
 	echo "\nStarting installation of packages...\n"
-	sudo xbps-install -Sy $base $post $apps $fonts
+	sudo xbps-install -Sy $base $post $apps $dev $fonts
 }
 
 install_manjaro() {
