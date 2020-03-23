@@ -1,18 +1,48 @@
 #!/bin/sh
 
-base="bash-completion bspwm compton curl fcron git lxappearance openssh polybar rsync sxhkd tmux void-repo-nonfree wmctrl xdotool xorg xprop xtools"
-post="alsa-utils pulseaudio intel-video-accel"
-apps="dmenu docker docker-compose dunst evince firefox gthumb gtkwave htop i3lock-color iverilog mc neovim python3 rofi Thunar thunar-volman xautolock xst"
-fonts="font-Siji font-tamzen liberation-fonts-ttf noto-fonts-ttf noto-fonts-ttf-extra terminus-font"
 
-echo "\nStarting system update...\n"
-sudo xbps-install -Suy
+install_void() {
+	base="bash-completion bspwm compton curl fcron git lxappearance openssh polybar rsync sxhkd tmux void-repo-nonfree wmctrl xdotool xorg xprop xtools"
+	post="alsa-utils pulseaudio intel-video-accel"
+	apps="dmenu docker docker-compose dunst evince firefox gthumb gtkwave htop i3lock-color iverilog mc neovim python3 rofi stow Thunar thunar-volman xautolock xst"
+	fonts="font-Siji font-tamzen liberation-fonts-ttf noto-fonts-ttf noto-fonts-ttf-extra terminus-font"
 
-echo "\nStarting installation of packages...\n"
-sudo xbps-install -Sy $base $post $apps $fonts
+	echo "\nStarting system update...\n"
+	sudo xbps-install -Suy
+
+	echo "\nStarting installation of packages...\n"
+	sudo xbps-install -Sy $base $post $apps $fonts
+}
+
+install_manjaro() {
+	base="bash-completion compton curl fcron git lxappearance openbox openssh polybar rsync tmux wmctrl xdotool xorg xorg-xprop"
+	post="alsa-utils pulseaudio"
+	apps="dmenu docker docker-compose dunst evince firefox gthumb gtkwave htop i3lock-color iverilog mc neovim python3 rofi thunar thunar-volman xautolock"
+	fonts="font-Siji font-tamzen liberation-fonts-ttf noto-fonts-ttf noto-fonts-ttf-extra terminus-font"
+
+	echo "\nStarting system update...\n"
+	sudo pacman --noconfirm -Syu
+
+	echo "\nStarting installation of packages...\n"
+	sudo pacman --noconfirm -S $base $post $apps $fonts
+}
+
+# Main
+
+if [ -f /etc/os-release ]; then
+	. /etc/os-release
+	if [ "$ID" = "void" ]; then
+		install_void
+	elif [ "$ID" = "manjaro" ]; then
+		install_manjaro
+	else
+		echo "Unknown distribution!"
+	fi
+else
+	echo "os-release not found!"
+fi
 
 
 # Fetch vim-plug
-
 curl -fLo ~/hometest/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

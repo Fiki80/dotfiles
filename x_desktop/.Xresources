@@ -1,0 +1,31 @@
+!#include ".config/colors/base16-oceanicnext256"
+!#include ".config/colors/base16-monokai256"
+#include ".config/colors/allomancer"
+!#include ".config/colors/srcery"
+
+Xft.dpi: 94
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+
+URxvt.font: -misc-tamzen-medium-r-normal--16-116-100-100-c-80-iso8859-1
+URxvt.boldFont: -misc-tamzen-bold-r-normal--16-116-100-100-c-80-iso8859-1
+
+
+URxvt.scrollBar: false
+
+URxvt.letterSpace: 0
+
+URxvt.internalBorder: 4
+
+
+st.borderpx: 5
+st.font: Tamzen:pixelsize=16
+!st.font: SauceCodePro Nerd Font Mono:pixelsize=13:style=medium:autohint=true:antialias=true
+st.bold_font: 1
+
+
