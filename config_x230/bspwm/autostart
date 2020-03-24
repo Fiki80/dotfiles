@@ -10,9 +10,12 @@ pgrep -u "$USER" compton >/dev/null || compton &
 # https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling#Modifying_DPMS_and_screensaver_settings_using_xset
 xset s 590 590
 
+# Set initial brightness
+xbacklight -set 40
+
 # Start xautolock daemon
 pgrep -xu "$USER" xautolock >/dev/null || \
-    xautolock -locker "i3lock.sh -p 50 -de -I 5" -time 10 &
+xautolock -locker "i3lock.sh -p 50 -de -I 5" -time 10 &
 
 # Start polybar
 bar &
