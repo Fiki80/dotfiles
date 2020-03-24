@@ -7,3 +7,7 @@ vim +PlugInstall +qall
 sudo usermod -aG docker $USER
 sudo ln -s /etc/sv/docker /var/service/
 sudo sv start docker
+
+# Download and install winbox
+sudo mkdir -p /usr/share/winbox
+curl -O https://download.mikrotik.com/winbox/3.22/winbox.exe && sudo mv winbox.exe /usr/share/winbox
