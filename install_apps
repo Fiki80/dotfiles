@@ -1,5 +1,19 @@
 #!/bin/sh
 
+yesno() {
+	echo -e "\n"
+	read -n 1 -p "This script will install apps for $1. Continue (y/n)?" answer
+	case ${answer:0:1} in
+    y|Y )
+        continue
+    ;;
+    * )
+		echo -e "\n"
+        exit 1
+    ;;
+esac
+
+}
 
 install_void() {
 	base="bash-completion bspwm compton curl fcron git lxappearance openssh polybar rsync sxhkd tmux void-repo-multilib void-repo-nonfree wmctrl xdotool xorg xprop xtools"
@@ -34,8 +48,10 @@ install_manjaro() {
 if [ -f /etc/os-release ]; then
 	. /etc/os-release
 	if [ "$ID" = "void" ]; then
+		yesno "$ID"
 		install_void
 	elif [ "$ID" = "manjaro" ]; then
+		yesno "$ID"
 		install_manjaro
 	else
 		echo "Unknown distribution!"
